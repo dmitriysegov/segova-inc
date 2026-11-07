@@ -1,0 +1,45 @@
+@media (pointer: fine)
+{
+    body, a, button, .magnetic-btn
+    {
+        cursor: none !important;
+    }
+
+    .custom-cursor
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        background: #D5B36A;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        opacity: 0;
+        box-shadow: 0 0 10px rgba(213, 179, 106, 0.5);
+        transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, opacity 0.2s ease;
+    }
+
+    .custom-cursor.is-visible
+    {
+        opacity: 1;
+    }
+
+    .custom-cursor.hover
+    {
+        width: 50px;
+        height: 50px;
+        background: rgba(213, 179, 106, 0.1);
+        border: 1px solid rgba(213, 179, 106, 0.8);
+        box-shadow: 0 0 20px rgba(213, 179, 106, 0.3);
+    }
+}
+
+@media (pointer: coarse)
+{
+    .custom-cursor
+    {
+        display: none;
+    }
+}

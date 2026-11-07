@@ -1,0 +1,136 @@
+.contacts
+{
+    padding: 150px 20px 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contacts-content
+{
+    max-width: 800px;
+    padding: 60px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.contacts-content h2
+{
+    font-size: clamp(35px, 5vw, 55px);
+    margin-bottom: 25px;
+    background: linear-gradient(120deg, #ffffff, #D5B36A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.contacts-content p
+{
+    font-size: 20px;
+    color: rgba(244, 244, 244, 0.7);
+    line-height: 1.6;
+    margin-bottom: 50px;
+}
+
+.contacts-buttons
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.contact-btn
+{
+    padding: 20px 40px;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.contact-btn.wa
+{
+    background: rgba(213, 179, 106, 0.15);
+    border: 1px solid rgba(213, 179, 106, 0.5);
+    color: #F4F4F4;
+}
+
+.contact-btn.tg
+{
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #F4F4F4;
+}
+
+.contacts-footer
+{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+}
+
+.contact-btn.phone
+{
+    background: rgba(213, 179, 106, 0.06);
+    border: 1px solid rgba(213, 179, 106, 0.28);
+    color: rgba(244, 244, 244, 0.9);
+}
+
+@media (hover: hover)
+{
+    .contact-btn.wa:hover
+    {
+        background: #D5B36A;
+        color: #050608;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(213, 179, 106, 0.3);
+    }
+
+    .contact-btn.tg:hover
+    {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
+    }
+
+    .contact-btn.phone:hover
+    {
+        border-color: rgba(213, 179, 106, 0.65);
+        background: rgba(213, 179, 106, 0.15);
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 600px)
+{
+    .contacts
+    {
+        padding: 110px 16px 40px;
+    }
+
+    .contacts-content
+    {
+        padding: 36px 20px;
+        border-radius: 28px;
+    }
+
+    .contacts-content p
+    {
+        font-size: 17px;
+        margin-bottom: 36px;
+    }
+
+    .contact-btn
+    {
+        width: 100%;
+        min-height: 52px;
+    }
+}

@@ -1,0 +1,177 @@
+.directions
+{
+    min-height: 100vh;
+    padding: 120px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    position: relative;
+    z-index: 2;
+    background: radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+}
+
+.directions-content
+{
+    width: 100%;
+    max-width: 1200px;
+}
+
+.directions-content h2
+{
+    text-align: center;
+    font-size: clamp(40px, 5vw, 60px);
+    margin-bottom: 70px;
+    background: linear-gradient(120deg, #ffffff, #D5B36A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.directions-grid
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+.direction-card
+{
+    position: relative;
+    min-height: 280px;
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    /* Эффект микро-дыхания через тень (не конфликтует с GSAP 3D-наклоном) */
+    animation: microBreath 6s ease-in-out infinite;
+}
+
+.direction-card:nth-child(even)
+{
+    animation-delay: 3s;
+}
+
+@keyframes microBreath
+{
+    0%, 100% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); border-color: rgba(255, 255, 255, 0.06); }
+    50% { box-shadow: 0 25px 50px rgba(213, 179, 106, 0.08); border-color: rgba(213, 179, 106, 0.2); }
+}
+
+/* Световой луч (Sheen Effect) раз в несколько секунд */
+.card-sheen
+{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(213, 179, 106, 0.12) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: sheenAnim 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.direction-card:nth-child(odd) .card-sheen
+{
+    animation-delay: 2s;
+}
+
+@keyframes sheenAnim
+{
+    0% { transform: translateX(-100%); }
+    25% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+.direction-card::before
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 35px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(213, 179, 106, 0.6), transparent 50%, rgba(255, 255, 255, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+@media (hover: hover)
+{
+    .direction-card:hover::before
+    {
+        opacity: 1;
+    }
+}
+
+.card-glow
+{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(213, 179, 106, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+}
+
+.card-inner
+{
+    position: relative;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 2;
+    transform-style: preserve-3d;
+}
+
+.card-icon
+{
+    font-size: 45px;
+    margin-bottom: 20px;
+    display: inline-block;
+    transform-origin: center;
+    filter: drop-shadow(0px 10px 15px rgba(213, 179, 106, 0.2));
+}
+
+.direction-card h3
+{
+    color: #D5B36A;
+    font-size: 30px;
+    margin-bottom: 15px;
+    transform: translateZ(20px); 
+}
+
+.direction-card p
+{
+    font-size: 18px;
+    color: rgba(244, 244, 244, 0.75);
+    line-height: 1.6;
+    transform: translateZ(10px); 
+}
+
+@media(max-width: 800px)
+{
+    .directions-grid
+    {
+        grid-template-columns: 1fr;
+    }
+    
+    .direction-card
+    {
+        transform: none !important; 
+        animation: none;
+    }
+}

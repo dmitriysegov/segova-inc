@@ -1,0 +1,128 @@
+.preloader
+{
+    position: fixed;
+    inset: 0;
+    background: #050608;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader-content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.preloader-text
+{
+    color: #D5B36A;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInText 0.5s ease forwards;
+}
+
+.preloader-line
+{
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.preloader-line::after
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: #D5B36A;
+    animation: loadLine 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes fadeInText
+{
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadLine
+{
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.preloader
+{
+    position: fixed;
+    inset: 0;
+    background: #030406;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.preloader-content
+{
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+}
+
+.preloader-title
+{
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(120deg, #ffffff, #D5B36A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.preloader-counter
+{
+    font-size: 65px;
+    color: #F4F4F4;
+    font-weight: 300;
+    margin-bottom: 30px;
+    /* Это свойство делает так, чтобы ширина цифр (например, 1 и 8) была одинаковой, и текст не дергался */
+    font-variant-numeric: tabular-nums; 
+}
+
+.preloader-bar-wrap
+{
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.preloader-bar
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #D5B36A;
+    transform: scaleX(0);
+    transform-origin: left;
+    box-shadow: 0 0 15px rgba(213, 179, 106, 0.5);
+}
